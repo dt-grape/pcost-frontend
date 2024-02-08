@@ -1,0 +1,14 @@
+@import
+  'media',
+  'mixins',
+  'normalize',
+  'utils',
+  'variables',
+  'fonts',
+  'globals';
+
+@import
+  "components/productdetail",
+  "components/card",
+  "components/categories",
+  "components/header";

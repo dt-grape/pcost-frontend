@@ -1,0 +1,13 @@
+body {
+  font-family: Manrope, sans-serif;
+  background: #F6F9FC;
+}
+
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}

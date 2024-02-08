@@ -1,0 +1,22 @@
+.categories-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  .categories-item {
+
+    .categories-link {
+      @include reset-link;
+      @include hover-link;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+

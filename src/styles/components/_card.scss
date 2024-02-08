@@ -1,0 +1,54 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-light);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  transition-duration: var(--transition-duration);
+
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:hover {
+    filter: brightness(90%);
+  }
+
+  .card-image {
+    object-fit: contain;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--border-radius);
+  }
+
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    overflow: hidden;
+
+    .card-name {
+      font-weight: bold;
+      font-size: 18px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .card-price {
+      font-size: 16px;
+    }
+  }
+}
+
+.products-wrapper {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.product-link {
+  @include reset-link;
+}
