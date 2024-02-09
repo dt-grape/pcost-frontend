@@ -22,7 +22,7 @@ const ProductDetail = () => {
   return (
     <>
       {loading ? (
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%", paddingTop: "50px" }}>
           <LinearProgress />
         </Box>
       ) : (

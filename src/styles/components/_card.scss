@@ -6,13 +6,16 @@
   border-radius: var(--border-radius);
   transition-duration: var(--transition-duration);
 
-
   &:active {
     transform: scale(0.95);
   }
 
   &:hover {
     filter: brightness(90%);
+  }
+
+  &:hover .card-info .card-name {
+    white-space: initial;
   }
 
   .card-image {
@@ -27,6 +30,7 @@
     flex-direction: column;
     margin-top: 10px;
     overflow: hidden;
+
 
     .card-name {
       font-weight: bold;
@@ -43,7 +47,7 @@
 }
 
 .products-wrapper {
-  margin-top: 70px;
+  margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 30px;
@@ -51,4 +55,11 @@
 
 .product-link {
   @include reset-link;
+}
+
+.product-by-category-wrapper {
+  margin-top: 30px;
+  padding: 30px;
+  background: var(--color-light);
+  border-radius: var(--border-radius);
 }

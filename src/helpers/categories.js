@@ -2,7 +2,7 @@ const categories = [
   {
     id: 1,
     name: "Видеокарты",
-    path: "/cards",
+    path: "/products/category/1",
   },
   {
     id: 2,
