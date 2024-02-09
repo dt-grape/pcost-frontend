@@ -1,31 +1,31 @@
-import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import axios from "../axios";
+import { useSelector, useDispatch } from "react-redux";
 
 import ProductCard from "./ProductCard";
 import { LinearProgress, Box } from "@mui/material";
+import { fetchProducts } from "../redux/slices/products.js";
 
 const Products = () => {
-  const [products, setProducts] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.products);
 
-  React.useEffect(() => {
-    axios.get("products").then((response) => {
-      setProducts(response.data);
-      setLoading(false);
-    });
-  }, []);
+  const isProductsLoading = products.static === "loading";
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <>
-      {loading ? (
+      {isProductsLoading ? (
         <Box sx={{ width: "100%", paddingTop: "50px" }}>
           <LinearProgress />
         </Box>
       ) : (
         <div className="products-wrapper">
-          {products.map((product) => (
+          {products.items.map((product) => (
             <Link
               to={`/products/${product.id}`}
               key={product.id}
