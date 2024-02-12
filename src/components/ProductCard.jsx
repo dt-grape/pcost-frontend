@@ -1,5 +1,3 @@
-import React from "react";
-
 const ProductCard = ({ img, name, price }) => {
   return (
     <div className="card">

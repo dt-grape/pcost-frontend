@@ -11,7 +11,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
 
-  const isProductsLoading = products.static === "loading";
+  const isProductsLoading = products.status === "loading";
 
   useEffect(() => {
     dispatch(fetchProducts());

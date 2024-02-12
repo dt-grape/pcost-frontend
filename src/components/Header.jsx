@@ -20,7 +20,7 @@ const Header = () => {
             <input
               className="search-input"
               type="search"
-              placeholder="Найти в coFinder"
+              placeholder="Найти в pCost"
             />
             <Tooltip title="Поиск">
               <button type="button" className="search-button">
@@ -31,7 +31,7 @@ const Header = () => {
           {isAuthorized ? (
             <div className="nav-auth">
               <NavLink to="/me">
-                <Avatar sx={{ bgcolor: green[500] }}>D</Avatar>
+                <Avatar sx={{ backgroundColor: green[500] }}>D</Avatar>
               </NavLink>
               <NavLink to="/logout" className="nav-logout button">
                 Выйти
