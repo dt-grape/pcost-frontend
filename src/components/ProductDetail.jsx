@@ -32,7 +32,9 @@ const ProductDetail = () => {
               <img src={product.image} alt="" className="product-image" />
             </div>
             <div className="product-info">
-              <Typography variant="h4">{product.name}</Typography>
+              <Typography sx={{ fontSize: { xs: "16px", md: "32px" } }}>
+                {product.name}
+              </Typography>
               <div className="product-rating">
                 <Typography>Оценка</Typography>
                 <Rating defaultValue={3.5} precision={0.5} readOnly />

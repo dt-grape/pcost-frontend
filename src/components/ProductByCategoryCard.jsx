@@ -19,7 +19,7 @@ const ProductByCategoryCard = ({ image, title, price }) => {
           image={image}
           alt="product-image"
           sx={{
-            width: "150px",
+            width: { xs: "100px", md: "150px" },
             aspectRatio: "1",
             objectFit: "contain",
           }}
@@ -33,8 +33,12 @@ const ProductByCategoryCard = ({ image, title, price }) => {
             }}
           >
             <Box>
-              <Typography variant="h5">{title}</Typography>
-              <Typography variant="h6">{price} руб.</Typography>
+              <Typography sx={{ fontSize: { xs: "18px", md: "24px" } }}>
+                {title}
+              </Typography>
+              <Typography sx={{ fontSize: { xs: "14px", md: "18px" } }}>
+                {price} руб.
+              </Typography>
             </Box>
           </CardContent>
         </Box>

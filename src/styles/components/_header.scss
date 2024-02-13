@@ -9,6 +9,7 @@
     .nav-link {
       @include hover-link;
       @include reset-link;
+      @include fluid-text;
       display: inline-flex;
       height: 40px;
       font-family: "Montserrat", sans-serif;

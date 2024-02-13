@@ -26,6 +26,10 @@
     background-color: var(--color-dark);
     color: white;
   }
+
+  @media (max-width: 768px) {
+    padding-inline: 10px;
+  }
 }
 .button {
   @include reset-link;

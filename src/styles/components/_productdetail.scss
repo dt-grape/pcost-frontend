@@ -4,6 +4,11 @@
   align-items: center;
   padding-top: 30px;
 
+  @media (max-width: 768px) {
+    gap: 15px;
+    flex-direction: column;
+  }
+
 
   .product-image-wrapper {
     width: 50%;
@@ -13,10 +18,18 @@
     justify-content: center;
     border-radius: var(--border-radius);
 
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
     .product-image {
       width: 400px;
       aspect-ratio: 1;
       object-fit: contain;
+
+      @media (max-width: 768px) {
+        width: 250px;
+      }
     }
 
   }
@@ -27,6 +40,12 @@
     align-items: start;
     row-gap: 25px;
     width: 50%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+
 
     .product-rating {
       display: inline-flex;

@@ -26,15 +26,17 @@ const ProductsByCategory = () => {
   return (
     <>
       <Header />
-      <Categories />
+      <Box sx={{ display: { xs: "none", md: "flex" } }}>
+        <Categories />
+      </Box>
 
-      <div className="product-by-category-wrapper">
-        {loading ? (
-          <Box sx={{ width: "100%", paddingTop: "50px" }}>
-            <LinearProgress />
-          </Box>
-        ) : (
-          products.map((product) => (
+      {loading ? (
+        <Box sx={{ width: "100%", paddingTop: "50px" }}>
+          <LinearProgress />
+        </Box>
+      ) : (
+        <div className="product-by-category-wrapper">
+          {products.map((product) => (
             <Link
               to={`/products/${product.id}`}
               key={product.id}
@@ -46,9 +48,9 @@ const ProductsByCategory = () => {
                 title={product.name}
               />
             </Link>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
