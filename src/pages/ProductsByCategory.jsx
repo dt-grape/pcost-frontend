@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "../axios";
 
 import Header from "../components/Header.jsx";
-import Categories from "../components/Categories.jsx";
 import ProductByCategoryCard from "../components/ProductByCategoryCard";
 
 import { Link } from "react-router-dom";
@@ -26,22 +25,17 @@ const ProductsByCategory = () => {
   return (
     <>
       <Header />
-      <Box sx={{ display: { xs: "none", md: "flex" } }}>
-        <Categories />
-      </Box>
 
       {loading ? (
-        <Box sx={{ width: "100%", paddingTop: "50px" }}>
+        <div className={`container px-4 mx-auto mt-10`}>
           <LinearProgress />
-        </Box>
+        </div>
       ) : (
-        <div className="product-by-category-wrapper">
+        <div
+          className={`container px-4 mx-auto mt-10 rounded-2xl bg-white dark:bg-gray-800`}
+        >
           {products.map((product) => (
-            <Link
-              to={`/products/${product.id}`}
-              key={product.id}
-              className="product-link"
-            >
+            <Link to={`/products/${product.id}`} key={product.id} className="">
               <ProductByCategoryCard
                 image={product.link}
                 price={product.price}

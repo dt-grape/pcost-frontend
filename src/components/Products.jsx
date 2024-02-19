@@ -18,19 +18,15 @@ const Products = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className={`container px-4 mx-auto pt-10`}>
       {isProductsLoading ? (
         <Box sx={{ width: "100%", paddingTop: "50px" }}>
           <LinearProgress />
         </Box>
       ) : (
-        <div className="products-wrapper">
+        <div className="grid sm:grid-cols-2 gap-y-8 md:grid-cols-4 xl:grid-cols-6 auto-rows-auto xl:gap-6 md:gap-4 sm:gap-2">
           {products.items.map((product) => (
-            <Link
-              to={`/products/${product.id}`}
-              key={product.id}
-              className="product-link"
-            >
+            <Link to={`/products/${product.id}`} key={product.id} className="">
               <ProductCard
                 name={product.name}
                 price={product.price}
@@ -40,7 +36,7 @@ const Products = () => {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
