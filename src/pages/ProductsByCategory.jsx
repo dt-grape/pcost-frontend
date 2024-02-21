@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import axios from "../axios";
 
 import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
 import ProductByCategoryCard from "../components/ProductByCategoryCard";
 
 import { Link } from "react-router-dom";
-import { Box, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 
 const id = 1;
 
@@ -27,7 +28,7 @@ const ProductsByCategory = () => {
       <Header />
 
       {loading ? (
-        <div className={`container px-4 mx-auto mt-10`}>
+        <div className={`container px-4 mx-auto mt-10 min-h-screen`}>
           <LinearProgress />
         </div>
       ) : (
@@ -45,6 +46,7 @@ const ProductsByCategory = () => {
           ))}
         </div>
       )}
+      <Footer />
     </>
   );
 };

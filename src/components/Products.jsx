@@ -20,9 +20,9 @@ const Products = () => {
   return (
     <div className={`container px-4 mx-auto pt-10`}>
       {isProductsLoading ? (
-        <Box sx={{ width: "100%", paddingTop: "50px" }}>
+        <div className={`min-h-screen`}>
           <LinearProgress />
-        </Box>
+        </div>
       ) : (
         <div className="grid sm:grid-cols-2 gap-y-8 md:grid-cols-4 xl:grid-cols-6 auto-rows-auto xl:gap-6 md:gap-4 sm:gap-2">
           {products.items.map((product) => (

@@ -22,7 +22,7 @@ const ProductDetail = () => {
   return (
     <>
       {loading ? (
-        <div className={`container mx-auto pt-10 px-4`}>
+        <div className={`container mx-auto pt-10 px-4 min-h-screen`}>
           <LinearProgress />
         </div>
       ) : (
