@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Rating, Typography, Box, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 
 import { useParams } from "react-router-dom";
 

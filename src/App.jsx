@@ -9,6 +9,7 @@ import ProductsByCategory from "./pages/ProductsByCategory.jsx";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "./redux/slices/themeSlice.js";
+import SearchResult from "./pages/SearchResult.jsx";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,10 @@ const App = () => {
         <Route path="register/" element={<Register />} />
         <Route path="products/:id" element={<ProductDetailPage />} />
         <Route path="products/category/:id" element={<ProductsByCategory />} />
+        <Route
+          path={"products/search/:searchQuery"}
+          element={<SearchResult />}
+        />
       </Routes>
     </div>
   );

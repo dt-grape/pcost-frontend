@@ -5,13 +5,14 @@ import { toggleTheme } from "../redux/slices/themeSlice";
 
 import { Link } from "react-router-dom";
 
-import SearchIcon from "@mui/icons-material/Search";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
 import categories from "../helpers/categories.js";
+import Search from "./Search.jsx";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,10 +22,17 @@ const Header = () => {
     dispatch(toggleTheme());
   };
 
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isCategoriesModalOpen, setIsCategoriesModalOpen] =
+    React.useState(false);
 
-  const handleModal = () => {
-    setIsModalOpen(!isModalOpen);
+  const [isSearchModalOpen, setIsSearchModalOpen] = React.useState(false);
+
+  const handleCategoriesModal = () => {
+    setIsCategoriesModalOpen(!isCategoriesModalOpen);
+  };
+
+  const handleSearchModal = () => {
+    setIsSearchModalOpen(!isSearchModalOpen);
   };
 
   return (
@@ -33,22 +41,8 @@ const Header = () => {
         <Link to={`/`} className={`font-bold text-4xl `}>
           pCost
         </Link>
-        <div
-          className={`
-          dark:dark:border-white
-          sm:w-1/6 md:w-1/3 xl:w-1/2 md:flex items-center border-black border-solid border-[1px] rounded-2xl hidden`}
-        >
-          <input
-            type="text"
-            placeholder={`Найти в pCost`}
-            className={`md:flex hidden w-full h-10 rounded-tl-2xl rounded-bl-2xl pl-8 dark:bg-gray-900`}
-          />
-          <button
-            type="submit"
-            className={`inline-flex h-10 items-center text-white bg-blue-500 rounded-tr-2xl rounded-br-2xl px-4 hover:brightness-110 transition`}
-          >
-            <SearchIcon />
-          </button>
+        <div className={`md:flex hidden sm:w-1/6 md:w-1/3 xl:w-1/2`}>
+          <Search />
         </div>
         <div className={`sm:flex hidden gap-x-4`}>
           <Link
@@ -68,7 +62,13 @@ const Header = () => {
         </div>
         <div className={`flex gap-x-4`}>
           <button
-            onClick={handleModal}
+            onClick={handleSearchModal}
+            className={`sm:hidden w-10 h-10 inline-flex items-center justify-center rounded-full border-black border-solid border-[1px] dark:border-white`}
+          >
+            <SearchIcon />
+          </button>
+          <button
+            onClick={handleCategoriesModal}
             className={`sm:hidden w-10 h-10 inline-flex items-center justify-center rounded-full border-black border-solid border-[1px] dark:border-white`}
           >
             <MenuIcon />
@@ -88,13 +88,13 @@ const Header = () => {
           </button>
         </div>
       </header>
-      {isModalOpen && (
+      {isCategoriesModalOpen && (
         <div
           className={`fixed top-0 left-0 flex items-center justify-center w-full h-full bg-white dark:bg-gray-900`}
         >
           <div className={`flex items-center justify-between flex-col`}>
             <button
-              onClick={handleModal}
+              onClick={handleCategoriesModal}
               className={`w-10 h-10 fixed top-4 right-4 rounded-full border-black border-solid border-[1px] dark:border-white`}
             >
               <CloseIcon />
@@ -108,6 +108,23 @@ const Header = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+      )}
+      {isSearchModalOpen && (
+        <div
+          className={`fixed top-0 left-0 w-full h-36 bg-white dark:bg-gray-900`}
+        >
+          <div className={`flex items-center justify-between flex-col`}>
+            <button
+              onClick={handleSearchModal}
+              className={`w-10 h-10 fixed top-4 right-4 rounded-full border-black border-solid border-[1px] dark:border-white`}
+            >
+              <CloseIcon />
+            </button>
+            <div className={`fixed top-20 w-5/6 `}>
+              <Search />
+            </div>
           </div>
         </div>
       )}
