@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import ProductCard from "./ProductCard";
-import { LinearProgress, Box } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import { fetchProducts } from "../redux/slices/products.js";
 
 const Products = () => {

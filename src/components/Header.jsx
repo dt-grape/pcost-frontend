@@ -9,14 +9,17 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-
-import categories from "../helpers/categories.js";
-import Search from "./Search.jsx";
 import SearchIcon from "@mui/icons-material/Search";
+
+import Search from "./Search.jsx";
+import Auth from "./Auth.jsx";
+import Categories from "./Categories.jsx";
 
 const Header = () => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
+
+  React.useEffect(() => {}, []);
 
   const handleDarkMode = () => {
     dispatch(toggleTheme());
@@ -44,22 +47,7 @@ const Header = () => {
         <div className={`md:flex hidden sm:w-1/6 md:w-1/3 xl:w-1/2`}>
           <Search />
         </div>
-        <div className={`sm:flex hidden gap-x-4`}>
-          <Link
-            to={`/login`}
-            className={`
-            dark:bg-transparent dark:border-white dark:hover:bg-white dark:hover:text-black
-            inline-flex items-center px-8 border-black border-solid border-[1px] h-10 rounded-2xl hover:bg-black hover:text-white transition`}
-          >
-            Войти
-          </Link>
-          <Link
-            to={`/register`}
-            className={`inline-flex items-center px-8 bg-blue-500 text-white hover:brightness-110 h-10 rounded-2xl transition`}
-          >
-            Регистрация
-          </Link>
-        </div>
+        <Auth />
         <div className={`flex gap-x-4`}>
           <button
             onClick={handleSearchModal}
@@ -99,15 +87,7 @@ const Header = () => {
             >
               <CloseIcon />
             </button>
-            <ul className={`flex flex-col gap-y-4`}>
-              {categories.map((category) => (
-                <li key={category.id}>
-                  <Link to={category.path} className={`text-3xl`}>
-                    {category.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <Categories />
           </div>
         </div>
       )}
@@ -128,15 +108,9 @@ const Header = () => {
           </div>
         </div>
       )}
-      <ul className={`md:flex hidden gap-x-4 items-center mt-8`}>
-        {categories.map((category) => (
-          <li key={category.id}>
-            <Link to={category.path} className={`text-xl`}>
-              {category.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className={`md:flex hidden`}>
+        <Categories />
+      </div>
     </div>
   );
 };

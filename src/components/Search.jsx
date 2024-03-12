@@ -20,13 +20,12 @@ const Search = () => {
   return (
     <div
       className={`
-          dark:dark:border-white
-          flex items-center w-full border-black border-solid border-[1px] rounded-2xl`}
+          flex items-center w-full rounded-2xl`}
     >
       <input
         type="text"
         placeholder={`Найти в pCost`}
-        className={`md:flex w-full h-10 rounded-tl-2xl rounded-bl-2xl pl-8 dark:bg-gray-900`}
+        className={`md:flex w-full h-10 rounded-tl-2xl rounded-bl-2xl pl-8 dark:bg-gray-800 focus:outline-none transition`}
         onChange={handleSearch}
       />
       <button

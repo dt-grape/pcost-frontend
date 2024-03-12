@@ -19,6 +19,12 @@ const ProductDetail = () => {
     });
   }, [id]);
 
+  useEffect(() => {
+    if (product) {
+      document.title = `pCost | ${product.name}`;
+    }
+  }, [product]);
+
   return (
     <>
       {loading ? (
