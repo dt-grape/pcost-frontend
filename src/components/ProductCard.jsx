@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const ProductCard = ({ img, name, price }) => {
   return (
     <div
@@ -18,6 +20,12 @@ const ProductCard = ({ img, name, price }) => {
       </div>
     </div>
   );
+};
+
+ProductCard.propTypes = {
+  img: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default ProductCard;

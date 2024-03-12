@@ -15,6 +15,7 @@ const SearchResult = () => {
     /*console.log(searchQuery);*/
     axios.get(`products/search/${searchQuery}`).then((response) => {
       setProducts(response.data);
+      document.title = `pCost | ${searchQuery}`;
       setLoading(false);
     });
   }, [searchQuery]);
@@ -28,11 +29,9 @@ const SearchResult = () => {
             <LinearProgress />
           </div>
         ) : (
-          <div
-            className={`container px-4 mx-auto mt-10 rounded-2xl bg-white dark:bg-gray-800`}
-          >
+          <div className={`container flex flex-col gap-y-2 px-4 mx-auto mt-10`}>
             {products.length === 0 ? (
-              <div className="text-center p-10">
+              <div className="text-center p-10 bg-white dark:bg-gray-800 rounded-2xl">
                 <h1 className="text-2xl">Ничего не найдено</h1>
               </div>
             ) : (

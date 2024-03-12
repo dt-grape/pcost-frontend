@@ -1,7 +1,12 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
+import { useEffect } from "react";
+
 const Login = () => {
+  useEffect(() => {
+    document.title = "pCost | Вход";
+  }, []);
+
   return (
     <div className={`h-screen flex flex-col items-center justify-center`}>
       <div

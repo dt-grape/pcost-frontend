@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import axios from "../axios";
 
@@ -12,20 +12,15 @@ import { LinearProgress } from "@mui/material";
 const ProductsByCategory = () => {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const { id } = useParams();
+  const { id, categoryName } = useParams();
 
   useEffect(() => {
     axios.get(`products/category/${id}`).then((response) => {
       setProducts(response.data);
+      document.title = `pCost | ${categoryName}`;
       setLoading(false);
-      console.log(response.data);
     });
-  }, [id]);
-
-  useEffect(() => {
-    document.title = "pCost | Видеокарты";
-  });
+  }, [categoryName, id]);
 
   return (
     <>
@@ -38,10 +33,10 @@ const ProductsByCategory = () => {
       ) : (
         <div className={`min-h-screen`}>
           <div
-            className={`container px-4 mx-auto mt-10 rounded-2xl bg-white dark:bg-gray-800`}
+            className={`container flex flex-col gap-y-2 px-4 mx-auto mt-10 `}
           >
             {products.length === 0 ? (
-              <div className="text-center p-10">
+              <div className="text-center p-10 bg-white dark:bg-gray-800 rounded-2xl">
                 <h1 className="text-2xl">Ничего не найдено</h1>
               </div>
             ) : (

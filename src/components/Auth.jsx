@@ -5,6 +5,10 @@ import { Logout } from "@mui/icons-material";
 const Auth = () => {
   const [isAuth, setIsAuth] = React.useState(false);
 
+  React.useEffect(() => {
+    setIsAuth(false);
+  }, []);
+
   return (
     <>
       {isAuth ? (

@@ -37,7 +37,10 @@ const App = () => {
         <Route path="login/" element={<Login />} />
         <Route path="register/" element={<Register />} />
         <Route path="products/:id" element={<ProductDetailPage />} />
-        <Route path="products/category/:id" element={<ProductsByCategory />} />
+        <Route
+          path="products/category/:id/:categoryName"
+          element={<ProductsByCategory />}
+        />
         <Route
           path={"products/search/:searchQuery"}
           element={<SearchResult />}

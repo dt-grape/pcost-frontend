@@ -1,7 +1,11 @@
-import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  useEffect(() => {
+    document.title = "pCost | Регистрация";
+  });
+
   return (
     <div className={`h-screen flex flex-col items-center justify-center`}>
       <div

@@ -93,7 +93,7 @@ const Header = () => {
       )}
       {isSearchModalOpen && (
         <div
-          className={`fixed top-0 left-0 w-full h-36 bg-white dark:bg-gray-900`}
+          className={`fixed top-0 left-0 w-full h-36 bg-gray-100 dark:bg-gray-900`}
         >
           <div className={`flex items-center justify-between flex-col`}>
             <button
