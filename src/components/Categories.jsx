@@ -4,7 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCategories } from "../redux/slices/categories.js";
 
-const Categories = () => {
+import PropTypes from "prop-types";
+
+const Categories = ({ setIsCategoriesModalOpen }) => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
 
@@ -19,7 +21,7 @@ const Categories = () => {
     if (id) {
       const category = categories.items.find((category) => category.id === id);
       if (category) {
-        document.title = `pCost | ${category.name}`; // Устанавливаем имя категории в title
+        document.title = `pCost | ${category.name}`;
       }
     }
   }, [id, categories.items]);
@@ -32,9 +34,10 @@ const Categories = () => {
         {categories.items.map((category) => (
           <li key={category.id}>
             <button
-              onClick={() =>
-                navigate(`/products/category/${category.id}/${category.name}`)
-              }
+              onClick={() => {
+                navigate(`/products/category/${category.id}/${category.name}`);
+                setIsCategoriesModalOpen(false);
+              }}
               className={`text-xl`}
             >
               {category.name}
@@ -44,6 +47,14 @@ const Categories = () => {
       </ul>
     </div>
   );
+};
+
+Categories.propTypes = {
+  setIsCategoriesModalOpen: PropTypes.func,
+};
+
+Categories.defaultProps = {
+  setIsCategoriesModalOpen: () => {},
 };
 
 export default Categories;

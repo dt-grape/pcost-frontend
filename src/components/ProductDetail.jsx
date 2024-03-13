@@ -22,6 +22,7 @@ const ProductDetail = () => {
   useEffect(() => {
     if (product) {
       document.title = `pCost | ${product.name}`;
+      window.scrollTo(0, 0);
     }
   }, [product]);
 
@@ -33,13 +34,11 @@ const ProductDetail = () => {
         </div>
       ) : (
         <div className={`container mx-auto px-4 pt-10`}>
-          <div
-            className={`flex md:flex-row flex-col items-center justify-center gap-8`}
-          >
+          <div className={`flex md:flex-row flex-col justify-center gap-8`}>
             <img
               src={product.image}
               alt=""
-              className={`aspect-square object-contain bg-white rounded-2xl p-4`}
+              className={`aspect-square object-contain bg-white rounded-2xl p-4 shadow-2xl dark:shadow-none`}
             />
 
             <div className="flex flex-col gap-y-4 justify-center">
@@ -51,7 +50,7 @@ const ProductDetail = () => {
               </button>
             </div>
           </div>
-          <div className={`flex flex-col gap-y-4`}>
+          <div className={`flex flex-col gap-y-4 md:mt-0 mt-4`}>
             <div className={`flex flex-col gap-y-2`}>
               <h3 className={`font-medium text-2xl`}>Цены</h3>
               <hr className={`border-black dark:border-white`} />

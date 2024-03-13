@@ -87,7 +87,7 @@ const Header = () => {
             >
               <CloseIcon />
             </button>
-            <Categories />
+            <Categories setIsCategoriesModalOpen={setIsCategoriesModalOpen} />
           </div>
         </div>
       )}
@@ -103,7 +103,10 @@ const Header = () => {
               <CloseIcon />
             </button>
             <div className={`fixed top-20 w-5/6 `}>
-              <Search />
+              <Search
+                setIsSearchModalOpen={setIsSearchModalOpen}
+                isSearchModalOpen={isSearchModalOpen}
+              />
             </div>
           </div>
         </div>

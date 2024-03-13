@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const ProductByCategoryCard = ({ image, title, price }) => {
   return (
     <div
-      className={`bg-white dark:bg-gray-800 rounded-2xl active:scale-95 hover:brightness-90 group transition`}
+      className={`bg-white dark:bg-gray-800 rounded-2xl active:scale-95 hover:brightness-90 group transition shadow-2xl dark:shadow-none`}
     >
       <div className={`flex items-center gap-x-4 px-4`}>
         <img

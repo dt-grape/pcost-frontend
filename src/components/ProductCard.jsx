@@ -5,7 +5,7 @@ const ProductCard = ({ img, name, price }) => {
     <div
       className="
     dark:bg-gray-800
-    flex flex-col bg-white h-full justify-start p-4 rounded-2xl active:scale-90 hover:brightness-90 group transition"
+    flex flex-col bg-white h-full justify-start p-4 rounded-2xl active:scale-90 hover:brightness-90 group transition shadow-2xl dark:shadow-none"
     >
       <img
         src={img}

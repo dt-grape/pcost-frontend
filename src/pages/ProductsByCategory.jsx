@@ -33,7 +33,7 @@ const ProductsByCategory = () => {
       ) : (
         <div className={`min-h-screen`}>
           <div
-            className={`container flex flex-col gap-y-2 px-4 mx-auto mt-10 `}
+            className={`container flex flex-col gap-y-4 px-4 mx-auto mt-10 `}
           >
             {products.length === 0 ? (
               <div className="text-center p-10 bg-white dark:bg-gray-800 rounded-2xl">
