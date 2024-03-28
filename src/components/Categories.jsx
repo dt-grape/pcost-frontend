@@ -6,7 +6,7 @@ import { fetchCategories } from "../redux/slices/categories.js";
 
 import PropTypes from "prop-types";
 
-const Categories = ({ setIsCategoriesModalOpen }) => {
+const Categories = React.memo(({ setIsCategoriesModalOpen }) => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
 
@@ -47,7 +47,7 @@ const Categories = ({ setIsCategoriesModalOpen }) => {
       </ul>
     </div>
   );
-};
+});
 
 Categories.propTypes = {
   setIsCategoriesModalOpen: PropTypes.func,
@@ -56,5 +56,7 @@ Categories.propTypes = {
 Categories.defaultProps = {
   setIsCategoriesModalOpen: () => {},
 };
+
+Categories.displayName = "Categories";
 
 export default Categories;

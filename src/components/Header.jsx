@@ -15,7 +15,7 @@ import Search from "./Search.jsx";
 import Auth from "./Auth.jsx";
 import Categories from "./Categories.jsx";
 
-const Header = () => {
+const Header = React.memo(() => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
 
@@ -116,6 +116,8 @@ const Header = () => {
       </div>
     </div>
   );
-};
+});
+
+Header.displayName = "Header";
 
 export default Header;

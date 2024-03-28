@@ -16,7 +16,7 @@ const ProductCard = ({ img, name, price }) => {
         <span className={`font-medium text-xl group-hover:text-blue-500`}>
           {name}
         </span>
-        <span className={`text-lg`}>от {price}</span>
+        <span className={`text-lg`}>от {price} ₽</span>
       </div>
     </div>
   );

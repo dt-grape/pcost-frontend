@@ -58,7 +58,7 @@ const ProductDetail = () => {
                 {Object.entries(product.prices).map(([store, price]) => (
                   <li className="" key={store}>
                     <p className={`text-xl`}>
-                      {store}: {price} руб.
+                      {store}: {price} ₽
                     </p>
                   </li>
                 ))}

@@ -53,6 +53,7 @@ const Search = ({ setIsSearchModalOpen, isSearchModalOpen }) => {
 
 Search.propTypes = {
   setIsSearchModalOpen: PropTypes.func,
+  isSearchModalOpen: PropTypes.bool,
 };
 
 Search.defaultProps = {
