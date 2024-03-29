@@ -18,7 +18,7 @@ const Products = () => {
   }, [dispatch]);
 
   return (
-    <div className={`container px-4 mx-auto pt-10`}>
+    <div className={`container min-h-screen px-4 mx-auto pt-10`}>
       {isProductsLoading ? (
         <div className={`min-h-screen`}>
           <LinearProgress />

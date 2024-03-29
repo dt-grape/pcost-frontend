@@ -1,17 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Logout } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../redux/slices/auth.js";
 
 const Auth = () => {
-  const [isAuth, setIsAuth] = React.useState(false);
+  const user = useSelector((state) => state.auth.user);
 
-  React.useEffect(() => {
-    setIsAuth(false);
-  }, []);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+  };
 
   return (
     <>
-      {isAuth ? (
+      {user ? (
         <div className={`hidden sm:flex gap-x-4`}>
           <Link
             to={`/my-profile`}
@@ -19,12 +24,12 @@ const Auth = () => {
           >
             Мой профиль
           </Link>
-          <Link
-            to={`/logout`}
+          <button
+            onClick={() => handleLogout()}
             className={`inline-flex items-center px-8 bg-blue-500 text-white hover:brightness-110 h-10 rounded-2xl transition`}
           >
             <Logout />
-          </Link>
+          </button>
         </div>
       ) : (
         <div className={`sm:flex hidden gap-x-4`}>

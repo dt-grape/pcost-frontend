@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "./redux/slices/themeSlice.js";
 import SearchResult from "./pages/SearchResult.jsx";
+import { setUser } from "./redux/slices/auth.js";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,15 @@ const App = () => {
     const darkModeFromStorage = localStorage.getItem("darkMode") === "true";
     if (darkModeFromStorage !== darkMode) {
       dispatch(toggleTheme());
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (accessToken && refreshToken) {
+      dispatch(setUser({ accessToken, refreshToken }));
     }
   }, [dispatch]);
 
