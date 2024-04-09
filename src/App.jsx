@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "./redux/slices/themeSlice.js";
 import SearchResult from "./pages/SearchResult.jsx";
 import { setUser } from "./redux/slices/auth.js";
+import MyProfile from "./pages/MyProfile.jsx";
+import BottomNavigation from "./components/BottomNavigation.jsx";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -55,7 +57,9 @@ const App = () => {
           path={"products/search/:searchQuery"}
           element={<SearchResult />}
         />
+        <Route path={"my-profile"} element={<MyProfile />} />
       </Routes>
+      <BottomNavigation />
     </div>
   );
 };

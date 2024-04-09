@@ -9,7 +9,9 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import SearchIcon from "@mui/icons-material/Search";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
+import { Tooltip } from "@mui/material";
 
 import Search from "./Search.jsx";
 import Auth from "./Auth.jsx";
@@ -19,8 +21,6 @@ const Header = React.memo(() => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
 
-  React.useEffect(() => {}, []);
-
   const handleDarkMode = () => {
     dispatch(toggleTheme());
   };
@@ -28,14 +28,8 @@ const Header = React.memo(() => {
   const [isCategoriesModalOpen, setIsCategoriesModalOpen] =
     React.useState(false);
 
-  const [isSearchModalOpen, setIsSearchModalOpen] = React.useState(false);
-
   const handleCategoriesModal = () => {
     setIsCategoriesModalOpen(!isCategoriesModalOpen);
-  };
-
-  const handleSearchModal = () => {
-    setIsSearchModalOpen(!isSearchModalOpen);
   };
 
   return (
@@ -50,30 +44,37 @@ const Header = React.memo(() => {
         <Auth />
         <div className={`flex gap-x-4`}>
           <button
-            onClick={handleSearchModal}
-            className={`sm:hidden w-10 h-10 inline-flex items-center justify-center rounded-full border-black border-solid border-[1px] dark:border-white`}
-          >
-            <SearchIcon />
-          </button>
-          <button
             onClick={handleCategoriesModal}
             className={`sm:hidden w-10 h-10 inline-flex items-center justify-center rounded-full border-black border-solid border-[1px] dark:border-white`}
           >
             <MenuIcon />
           </button>
-          <button
-            className={`w-10 h-10 rounded-full inline-flex items-center justify-center  ${
-              darkMode
-                ? `border-white border-solid border-[1px] text-white`
-                : `border-black border-solid border-[1px] text-black`
-            }`}
-          >
-            {darkMode ? (
-              <DarkModeIcon onClick={handleDarkMode} />
-            ) : (
-              <LightModeIcon onClick={handleDarkMode} />
-            )}
-          </button>
+          <Tooltip title="Избранное">
+            <button
+              className={`w-10 h-10 rounded-full inline-flex items-center justify-center  ${
+                darkMode
+                  ? `border-white border-solid border-[1px] text-white`
+                  : `border-black border-solid border-[1px] text-black`
+              }`}
+            >
+              <FavoriteIcon />
+            </button>
+          </Tooltip>
+          <Tooltip title="Изменить тему">
+            <button
+              className={`w-10 h-10 rounded-full inline-flex items-center justify-center  ${
+                darkMode
+                  ? `border-white border-solid border-[1px] text-white`
+                  : `border-black border-solid border-[1px] text-black`
+              }`}
+            >
+              {darkMode ? (
+                <DarkModeIcon onClick={handleDarkMode} />
+              ) : (
+                <LightModeIcon onClick={handleDarkMode} />
+              )}
+            </button>
+          </Tooltip>
         </div>
       </header>
       {isCategoriesModalOpen && (
@@ -88,26 +89,6 @@ const Header = React.memo(() => {
               <CloseIcon />
             </button>
             <Categories setIsCategoriesModalOpen={setIsCategoriesModalOpen} />
-          </div>
-        </div>
-      )}
-      {isSearchModalOpen && (
-        <div
-          className={`fixed top-0 left-0 w-full h-36 bg-gray-100 dark:bg-gray-900`}
-        >
-          <div className={`flex items-center justify-between flex-col`}>
-            <button
-              onClick={handleSearchModal}
-              className={`w-10 h-10 fixed top-4 right-4 rounded-full border-black border-solid border-[1px] dark:border-white`}
-            >
-              <CloseIcon />
-            </button>
-            <div className={`fixed top-20 w-5/6 `}>
-              <Search
-                setIsSearchModalOpen={setIsSearchModalOpen}
-                isSearchModalOpen={isSearchModalOpen}
-              />
-            </div>
           </div>
         </div>
       )}
