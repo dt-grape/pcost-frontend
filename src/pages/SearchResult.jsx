@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header.jsx";
-import { LinearProgress, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import ProductByCategoryCard from "../components/ProductByCategoryCard.jsx";
 import Footer from "../components/Footer.jsx";
@@ -9,6 +9,7 @@ import axios from "../axios.js";
 import { toggleGrid } from "../redux/slices/grid.js";
 import { useDispatch, useSelector } from "react-redux";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import ProductByCategoryCardSkeleton from "../components/Skeletons/ProductByCategoryCardSkeleton.jsx";
 const SearchResult = () => {
   const [loading, setLoading] = React.useState(true);
   const [products, setProducts] = React.useState([]);
@@ -49,31 +50,34 @@ const SearchResult = () => {
   return (
     <>
       <Header />
-      <div className="min-h-screen">
+      <div className={`container flex flex-col px-4 mx-auto mt-8 min-h-screen`}>
+        <button className={`md:flex hidden self-end`} onClick={handleGrid}>
+          <Tooltip title="Изменить сетку">
+            <SpaceDashboardIcon />
+          </Tooltip>
+        </button>
         {loading ? (
-          <div className={`container px-4 mx-auto mt-10 min-h-screen`}>
-            <LinearProgress />
+          <div
+            className={`mt-4 ${
+              isGrid
+                ? `grid grid-cols-5 gap-4 auto-rows-auto`
+                : `flex flex-col gap-y-2`
+            }`}
+          >
+            {[...Array(10)].map((_, index) => (
+              <ProductByCategoryCardSkeleton key={index} />
+            ))}
           </div>
         ) : (
-          <div
-            className={`min-h-screen container mx-auto flex w-full flex-col`}
-          >
-            <button
-              className={`md:flex hidden px-4 self-end`}
-              onClick={handleGrid}
-            >
-              <Tooltip title="Изменить сетку">
-                <SpaceDashboardIcon />
-              </Tooltip>
-            </button>
-            <div className={`px-4 mt-10`}>
+          <div className={`flex w-full flex-col`}>
+            <div className={`flex`}>
               <h2 className={`md:text-2xl text-xl`}>
                 Результаты поиска по запросу {searchQuery}: найдено{" "}
                 {products.length} {getCorrectEnding(products.length)}
               </h2>
             </div>
             <div
-              className={`px-4 mt-10 ${
+              className={` mt-8 ${
                 isGrid
                   ? `grid grid-cols-5 gap-4 auto-rows-auto`
                   : `flex flex-col gap-y-2`

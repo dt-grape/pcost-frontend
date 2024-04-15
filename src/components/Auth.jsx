@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Logout } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 
 const Auth = () => {

@@ -3,7 +3,13 @@ import axios from "../../axios";
 
 export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
-  async () => {
+  async (_, { getState }) => {
+    const { categories } = getState();
+
+    if (categories.status === "loaded") {
+      return;
+    }
+
     const { data } = await axios.get("products/categories");
     return data;
   },

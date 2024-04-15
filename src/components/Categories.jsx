@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCategories } from "../redux/slices/categories.js";
 
+import CategorySkeleton from "./Skeletons/CategorySkeleton.jsx";
+
 import PropTypes from "prop-types";
 
 const Categories = React.memo(({ setIsCategoriesModalOpen }) => {
@@ -31,19 +33,23 @@ const Categories = React.memo(({ setIsCategoriesModalOpen }) => {
       <ul
         className={`flex md:flex-row flex-col gap-y-8 gap-x-4 items-center mt-8`}
       >
-        {categories.items.map((category) => (
-          <li key={category.id}>
-            <button
-              onClick={() => {
-                navigate(`/products/category/${category.id}/${category.name}`);
-                setIsCategoriesModalOpen(false);
-              }}
-              className={`text-xl`}
-            >
-              {category.name}
-            </button>
-          </li>
-        ))}
+        {categories.status === "loading"
+          ? [...Array(5)].map((_, index) => <CategorySkeleton key={index} />)
+          : categories.items.map((category) => (
+              <li key={category.id}>
+                <button
+                  onClick={() => {
+                    navigate(
+                      `/products/category/${category.id}/${category.name}`,
+                    );
+                    setIsCategoriesModalOpen(false);
+                  }}
+                  className={`text-xl`}
+                >
+                  {category.name}
+                </button>
+              </li>
+            ))}
       </ul>
     </div>
   );
