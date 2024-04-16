@@ -21,7 +21,7 @@ const ProductByCategoryCardSkeleton = () => {
         <div className={`flex flex-col`}>
           <div
             className={`font-medium text-xl group-hover:text-blue-500 bg-gray-200 animate-pulse h-6 mb-2 rounded-xl ${
-              isGrid ? `` : `w-96`
+              isGrid ? `` : `md:w-96`
             } `}
           ></div>
           <div
