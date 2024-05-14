@@ -5,6 +5,8 @@ import Footer from "../components/Footer.jsx";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../redux/slices/auth.js";
 
+import user from "../static/user.png";
+
 const MyProfile = () => {
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -14,6 +16,10 @@ const MyProfile = () => {
     window.location.href = "/";
   };
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Header />
@@ -22,15 +28,13 @@ const MyProfile = () => {
       >
         <div className={`flex flex-col w-full gap-y-4`}>
           <div
-            className={`bg-white rounded-2xl p-4 shadow-2xl flex flex-row gap-x-4 dark:bg-gray-800 dark:shadow-none`}
+            className={`bg-white rounded-2xl p-4 shadow-2xl flex flex-row md:gap-x-8 gap-x-4 dark:bg-gray-800 dark:shadow-none`}
           >
-            <img
-              src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"
-              alt=""
-              className={`md:w-64 w-32 rounded-xl`}
-            />
-            <div>
-              <h2>USER</h2>
+            <img src={user} alt="" className={`md:w-64 w-32 rounded-xl`} />
+            <div className={`mt-2`}>
+              <h2 className={`font-bold xl:text-6xl md:text-4xl text-2xl`}>
+                Макаренко Егор Алексеевич
+              </h2>
             </div>
           </div>
           <div

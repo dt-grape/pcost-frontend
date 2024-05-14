@@ -27,6 +27,7 @@ const SearchResult = () => {
     /*console.log(searchQuery);*/
     axios.get(`products/search/${searchQuery}`).then((response) => {
       setProducts(response.data);
+      window.scrollTo(0, 0);
       document.title = `pCost | ${searchQuery}`;
       setLoading(false);
     });
@@ -60,7 +61,7 @@ const SearchResult = () => {
           <div
             className={`mt-4 ${
               isGrid
-                ? `grid grid-cols-5 gap-4 auto-rows-auto`
+                ? `grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-4 auto-rows-auto`
                 : `flex flex-col gap-y-2`
             }`}
           >
@@ -71,15 +72,16 @@ const SearchResult = () => {
         ) : (
           <div className={`flex w-full flex-col`}>
             <div className={`flex`}>
-              <h2 className={`md:text-2xl text-xl`}>
-                Результаты поиска по запросу {searchQuery}: найдено{" "}
+              <h2 className={`md:text-2xl text-xl flex`}>
+                Результаты поиска по запросу{" "}
+                <p className={`font-bold ml-1`}>{searchQuery}</p>: найдено{" "}
                 {products.length} {getCorrectEnding(products.length)}
               </h2>
             </div>
             <div
               className={` mt-8 ${
                 isGrid
-                  ? `grid grid-cols-5 gap-4 auto-rows-auto`
+                  ? `grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-4 auto-rows-auto`
                   : `flex flex-col gap-y-2`
               } `}
             >

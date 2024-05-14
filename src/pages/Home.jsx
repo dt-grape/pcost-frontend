@@ -7,6 +7,7 @@ import React from "react";
 const Home = () => {
   React.useEffect(() => {
     document.title = "pCost | Главная страница";
+    window.scrollTo(0, 0);
   });
 
   return (

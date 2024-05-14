@@ -20,7 +20,7 @@ const BottomNavigation = () => {
 
   return (
     <div
-      className={` md:hidden sticky bg-white bottom-0 py-4 px-4 dark:bg-gray-900`}
+      className={` md:hidden sticky bg-white bottom-0 py-4 px-4 dark:bg-gray-800`}
     >
       <ul className={`flex justify-between items-center`}>
         <li>

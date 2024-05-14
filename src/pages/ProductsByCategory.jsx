@@ -45,7 +45,7 @@ const ProductsByCategory = () => {
           <div
             className={`mt-4 ${
               isGrid
-                ? `grid grid-cols-5 gap-4 auto-rows-auto`
+                ? `grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-4 auto-rows-auto`
                 : `flex flex-col gap-y-2`
             }`}
           >
@@ -58,7 +58,7 @@ const ProductsByCategory = () => {
             <div
               className={`mt-4 ${
                 isGrid
-                  ? `grid grid-cols-5 gap-4 auto-rows-auto`
+                  ? `grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-4 auto-rows-auto`
                   : `flex flex-col gap-y-2`
               } `}
             >

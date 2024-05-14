@@ -43,12 +43,14 @@ const Header = React.memo(() => {
         </div>
         <Auth />
         <div className={`flex gap-x-4`}>
-          <button
-            onClick={handleCategoriesModal}
-            className={`sm:hidden w-10 h-10 inline-flex items-center justify-center rounded-full border-black border-solid border-[1px] dark:border-white`}
-          >
-            <MenuIcon />
-          </button>
+          <Tooltip title="Категории">
+            <button
+              onClick={handleCategoriesModal}
+              className={`sm:hidden w-10 h-10 inline-flex items-center justify-center rounded-full border-black border-solid border-[1px] dark:border-white`}
+            >
+              <MenuIcon />
+            </button>
+          </Tooltip>
           <Tooltip title="Избранное">
             <button
               className={`w-10 h-10 rounded-full inline-flex items-center justify-center  ${
